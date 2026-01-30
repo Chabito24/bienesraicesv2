@@ -1,0 +1,60 @@
+@use 'variables' as *;
+@use 'sass:math';
+@use 'sass:color';
+
+/* ================================
+   MIXINS (REUTILIZABLES)
+   ================================ */
+
+/* Mixin para estilos desde tamaño "teléfono" en adelante
+   - Usa la variable $telefono como breakpoint mínimo
+   - @content permite insertar estilos dentro del mixin */
+@mixin telefono {
+  @media (min-width: #{$telefono}) {
+    @content;
+  }
+}
+
+/* Mixin para estilos desde tamaño "tablet" en adelante
+   - Usa la variable $tablet como breakpoint mínimo */
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+/* Mixin para estilos desde tamaño "desktop" en adelante
+   - Usa la variable $desktop como breakpoint mínimo */
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+/* Mixin para crear un grid de forma rápida y parametrizable
+   - $columnas: número de columnas del grid
+   - $espaciado: separación (gap) entre filas y columnas */
+@mixin grid($columnas, $espaciado) {
+  display: grid;
+  gap: $espaciado;
+  grid-template-columns: repeat($columnas, 1fr);
+}
+
+/* Mixin para botones (usado en anuncios, etc.) */
+@mixin boton($bgColor, $display) {
+  background-color: $bgColor;
+  color: $blanco;
+  font-weight: $bold;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  text-align: center;
+  margin-top: math.div($separacion, 2);
+  display: $display;
+  border: none;
+
+
+  &:hover {
+    background-color: color.adjust($bgColor, $lightness: -5%);
+    cursor: pointer;
+  }
+}

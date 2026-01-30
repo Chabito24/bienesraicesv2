@@ -1,0 +1,49 @@
+/* ================================
+   VARIABLES GLOBALES (SCSS)
+   ================================ */
+
+// -------------------------------
+// Fuentes
+// -------------------------------
+
+/* Fuente principal del proyecto
+   - Se usará en la mayoría del sitio (body, títulos, etc.) */
+$fuente_principal: 'Lato', sans-serif;
+
+// -------------------------------
+// Tamaños de Media Queries
+// -------------------------------
+
+/* Breakpoint para teléfonos (pantallas pequeñas) */
+$telefono: 480px;
+
+/* Breakpoint para tablets (pantallas medianas) */
+$tablet: 768px;
+
+/* Breakpoint para escritorio (pantallas grandes) */
+$desktop: 1024px;
+
+// -------------------------------
+// Colores
+// -------------------------------
+
+/* Colores base del proyecto */
+$negro: #000000;       // Texto principal o fondos oscuros
+$amarillo: #e08709;    // Color de acento
+$verde: #71b100;       // Color secundario o de éxito/confirmación
+$blanco: #ffffff;      // Fondo claro y contraste
+$gris: #e1e1e1;        // Bordes, separadores, fondos suaves
+$grisOscuro: #333333;  // Texto oscuro alternativo o fondos
+
+/* Separación general del diseño (espaciados y márgenes) */
+$separacion: 5rem;
+
+// -------------------------------
+// Pesos de fuente
+// -------------------------------
+
+/* Pesos de tipografía disponibles según la fuente importada */
+$delgada: 300;   // Texto liviano
+$regular: 400;   // Texto normal
+$bold: 700;      // Texto en negrita
+$black: 900;     // Texto extra negrita

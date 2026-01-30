@@ -1,0 +1,34 @@
+/* ================================
+   app.scss (ARCHIVO PRINCIPAL)
+   ================================ */
+
+/* IMPORTANTE:
+   - TODOS los @use deben ir al inicio del archivo.
+   - NO mezclar @import con @use.
+*/
+
+/* Base */
+@use 'base/normalize';
+@use 'base/variables' as *;
+@use 'base/mixins' as *;
+@use 'base/globales';
+@use 'base/utilidades';
+@use 'base/darkMode';
+
+/* Layout */
+@use 'layout/botones';
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/navegacion';
+@use 'layout/iconos';
+@use 'layout/anuncios';
+@use 'layout/contactar';
+@use 'layout/inferior';
+@use 'layout/testimoniales';
+@use 'layout/formularios';
+@use 'sass:math';
+@use 'sass:color';
+
+/* internas */
+
+@use 'internas/nosotros';
