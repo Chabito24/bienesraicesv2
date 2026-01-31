@@ -1,62 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <!-- Define la codificación de caracteres para soportar tildes, ñ, símbolos, etc. -->
-    <meta charset="UTF-8">
+<?php
 
-    <!-- Hace que el diseño sea responsive (se adapte correctamente a celulares, tablets y PC) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-
-    <!-- Título que aparece en la pestaña del navegador -->
-    <title>Bienes Raices</title>
-
-    <!-- Enlace al archivo CSS final compilado en la carpeta build -->
-    <link rel="stylesheet" href="build/css/app.css"> <!-- Agregamos el app.css del build -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-
-</head>
-<body>
-
-    <!-- Encabezado principal del sitio (zona superior) -->
-    <header class="header inicio">
-        <!-- Contenedor general para centrar el contenido y manejar el ancho -->
-        <div class="contenedor contenido-header">
-
-            <!-- Barra superior con logo y navegación -->
-            <div class="barra">
-
-                <!-- Logo que al hacer clic redirige a la página principal -->
-                <a href="/">
-                    <img src="build/img/logo.svg" alt="Logo Bienes Raices">
-                </a>
-
-                <div class="mobile-menu">
-                    <img loading="lazy" src="build/img/barras.svg" alt="menu responsive">
-                </div>
-
-                <div class="derecha">
-                    <!-- dark node -->
-                     <img loading="lazy" src="build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
-                    <!-- Menú de navegación principal -->
-                    <nav class="navegacion">
-                        <a href="nosotros.html">Nosotros</a>  <!-- Enlace a la sección/página Nosotros -->
-                        <a href="anuncios.html">Anuncios</a>  <!-- Enlace a la sección/página Anuncios -->
-                        <a href="blog.html">Blog</a>          <!-- Enlace a la sección/página Blog -->
-                        <a href="contacto.html">Contacto</a>  <!-- Enlace a la sección/página Contacto -->
-                    </nav>
-                </div>
-
-                
-
-            </div>
-
-            <!-- Título principal (hero) del header -->
-            <h1>Casas y apartamentos disponibles para vivir e invertir</h1>
-        </div>
-    </header>
+$inicio = true;
+ include 'includes/templates/header.php';
+ ?>
 
     <!-- Contenido principal de la página -->
     <main class="contenedor seccion">
@@ -116,7 +62,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>
 
                 
@@ -148,7 +94,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>
 
                 
@@ -180,20 +126,20 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>            
             </div>
         </div>
         
         <div class="alinear-derecha">
-            <a href="anuncios.html" class="boton-verde">Ver Todas</a>
+            <a href="anuncios.php" class="boton-verde">Ver Todas</a>
         </div>
     </section>
 
     <section class="imagen-contacto">
         <h2>Encuentra la casa de tus sueños</h2>
         <p>Llena el formulario de contacto y un asesor se comunicará contigo a la brevedad</p>
-        <a href="contacto.html" class="boton-amarillo-inlineblock ">Contactános</a>
+        <a href="contacto.php" class="boton-amarillo-inlineblock ">Contactános</a>
     </section>
 
     <div class="contenedor seccion seccion-inferior">
@@ -209,7 +155,7 @@
                     </picture>
                 </div>
                 <div class="texto-entrada">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p 0class="informacion-meta">escrito el <span>20/10/2021</span> por: <span>Admin</span></p>
                         <p>
@@ -228,7 +174,7 @@
                     </picture>
                 </div>
                 <div class="texto-entrada">
-                    <a href="entrada.html">
+                    <a href="entrada.php">
                         <h4>Guia para la decoración de tu hogar</h4>
                         <p class="informacion-meta">escrito el <span>20/10/2021</span> por: <span>Admin</span></p>
                         <p>
@@ -258,10 +204,10 @@
 
             <!-- Navegación repetida en el footer (accesibilidad / experiencia de usuario) -->
             <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="nosotros.php">Nosotros</a>
+                <a href="anuncios.php">Anuncios</a>
+                <a href="blog.php">Blog</a>
+                <a href="contacto.php">Contacto</a>
             </nav>
         </div>
 

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <header class="header">
+    <header class="header <?php echo isset( $inicio ) ? 'inicio' : '';?>">
         <div class="contenedor contenido-header">
             <div class="barra">
                 <a href="/">
@@ -25,10 +25,10 @@
                      <img loading="lazy" src="build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
                     <!-- Menú de navegación principal -->
                     <nav class="navegacion">
-                        <a href="nosotros.html">Nosotros</a>  <!-- Enlace a la sección/página Nosotros -->
-                        <a href="anuncios.html">Anuncios</a>  <!-- Enlace a la sección/página Anuncios -->
-                        <a href="blog.html">Blog</a>          <!-- Enlace a la sección/página Blog -->
-                        <a href="contacto.html">Contacto</a>  <!-- Enlace a la sección/página Contacto -->
+                        <a href="nosotros.php">Nosotros</a>  <!-- Enlace a la sección/página Nosotros -->
+                        <a href="anuncios.php">Anuncios</a>  <!-- Enlace a la sección/página Anuncios -->
+                        <a href="blog.php">Blog</a>          <!-- Enlace a la sección/página Blog -->
+                        <a href="contacto.php">Contacto</a>  <!-- Enlace a la sección/página Contacto -->
                     </nav>
                 </div>
                 
@@ -36,26 +36,3 @@
 
         </div>
     </header>
-
-    <main class="contenedor seccion">
-        <h1>base</h1>
-    </main>
-
-    <footer class="footer seccion">
-        <div class="contenedor contenedor-footer">
-            <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </div>
-
-        <p class="copyrigth">Todos los derechos Reservados 2026 &copy;</p>
-    </footer>
-
-
-    <script src="build/js/bundle.min.js" defer></script> <!--Se agrega script para incorporar bundle.min.js-->
-    
-</body>
-</html>

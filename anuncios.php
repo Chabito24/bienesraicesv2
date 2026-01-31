@@ -1,41 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes Raices</title>
-    <link rel="stylesheet" href="build/css/app.css"> <!--agragamos el app.css del build-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
+<?php 
 
-    <header class="header">
-        <div class="contenedor contenido-header">
-            <div class="barra">
-                <a href="/">
-                    <img src="build/img/logo.svg" alt="Logo Bienes Raices">
-                </a>
-                <div class="mobile-menu">
-                    <img loading="lazy" src="build/img/barras.svg" alt="menu responsive">
-                </div>
-                <div class="derecha">
-                    <!-- dark node -->
-                     <img loading="lazy" src="build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
-                    <!-- Menú de navegación principal -->
-                    <nav class="navegacion">
-                        <a href="nosotros.html">Nosotros</a>  <!-- Enlace a la sección/página Nosotros -->
-                        <a href="anuncios.html">Anuncios</a>  <!-- Enlace a la sección/página Anuncios -->
-                        <a href="blog.html">Blog</a>          <!-- Enlace a la sección/página Blog -->
-                        <a href="contacto.html">Contacto</a>  <!-- Enlace a la sección/página Contacto -->
-                    </nav>
-                </div>
-                
-            </div>
+include 'includes/templates/header.php';
 
-        </div>
-    </header>
+?>
 
     <main class="contenedor seccion">
         <h2>Casas y Aptos en venta</h2>
@@ -67,7 +34,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>
 
                 
@@ -99,7 +66,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>
 
                 
@@ -131,7 +98,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>            
             </div>
 
@@ -161,7 +128,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>            
             </div>
 
@@ -191,7 +158,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>            
             </div>
 
@@ -221,7 +188,7 @@
                         </li>
                     </ul>
 
-                    <a href="anuncio.html" class="boton boton-amarillo">ver</a>
+                    <a href="anuncio.php" class="boton boton-amarillo">ver</a>
                 </div>            
             </div>
         </div>
@@ -230,10 +197,10 @@
     <footer class="footer seccion">
         <div class="contenedor contenedor-footer">
             <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="nosotros.php">Nosotros</a>
+                <a href="anuncios.php">Anuncios</a>
+                <a href="blog.php">Blog</a>
+                <a href="contacto.php">Contacto</a>
             </nav>
         </div>
 
