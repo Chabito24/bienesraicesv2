@@ -197,26 +197,7 @@ $inicio = true;
         </section>
     </div>
 
-    <!-- Footer / pie de página -->
-    <footer class="footer seccion">
-        <!-- Contenedor interno del footer -->
-        <div class="contenedor contenedor-footer">
+<?php
 
-            <!-- Navegación repetida en el footer (accesibilidad / experiencia de usuario) -->
-            <nav class="navegacion">
-                <a href="nosotros.php">Nosotros</a>
-                <a href="anuncios.php">Anuncios</a>
-                <a href="blog.php">Blog</a>
-                <a href="contacto.php">Contacto</a>
-            </nav>
-        </div>
-
-        <!-- Texto de derechos reservados -->
-        <p class="copyrigth">Todos los derechos Reservados 2026 &copy;</p>
-    </footer>
-
-    <!-- Script final compilado/minificado (bundle con JS del proyecto) -->
-    <script src="build/js/bundle.min.js" defer></script> <!-- Se agrega script para incorporar bundle.min.js -->
-    
-</body>
-</html>
+include 'includes/templates/footer.php';
+ ?>
