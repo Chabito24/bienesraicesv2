@@ -2,8 +2,7 @@
 
 require 'includes/funciones.php';
 
-$inicio = true;
-incluirTemplate('header');
+incluirTemplate('header', $inicio = true);
 //  include 'includes/templates/header.php';
  ?>
 
@@ -202,5 +201,5 @@ incluirTemplate('header');
 
 <?php
 
-include 'includes/templates/footer.php';
+    incluirTemplate('footer');
  ?>
