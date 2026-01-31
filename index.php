@@ -1,7 +1,10 @@
 <?php
 
+require 'includes/funciones.php';
+
 $inicio = true;
- include 'includes/templates/header.php';
+incluirTemplate('header');
+//  include 'includes/templates/header.php';
  ?>
 
     <!-- Contenido principal de la página -->
