@@ -1,0 +1,17 @@
+@use '../base/variables' as *; // Importa variables globales (colores, tipografías, etc.) sin prefijo
+@use '../base/mixins' as *; // Importa mixins reutilizables sin prefijo (ej: tablet, grid)
+@use 'sass:math'; // Importa módulo math (operaciones matemáticas si se requieren)
+@use 'sass:color'; // Importa módulo color (ajustes de color si se requieren)
+
+.alerta {
+    padding: .5rem;
+    text-align: center;
+    font-weight: $regular;
+    text-transform: uppercase;
+    margin: 1rem 0;
+
+    &.error{
+        background-color: $rojo;
+        color: $blanco;
+    }
+}
