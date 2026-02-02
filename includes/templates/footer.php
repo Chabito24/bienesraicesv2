@@ -16,7 +16,7 @@
         <p class="copyrigth">Todos los derechos Reservados <?php echo date('Y'); ?> &copy;</p>
     </footer>
 
-        <script src="build/js/bundle.min.js" defer></script> <!--Se agrega script para incorporar bundle.min.js-->
+        <script src="/build/js/bundle.min.js" defer></script> <!--Se agrega script para incorporar bundle.min.js-->
     
 </body>
 </html>

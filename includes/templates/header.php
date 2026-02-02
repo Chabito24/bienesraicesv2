@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienes Raices</title>
-    <link rel="stylesheet" href="build/css/app.css"> <!--agragamos el app.css del build-->
+    <link rel="stylesheet" href="/build/css/app.css"> <!--agragamos el app.css del build-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -15,14 +15,14 @@
         <div class="contenedor contenido-header">
             <div class="barra">
                 <a href="/">
-                    <img src="build/img/logo.svg" alt="Logo Bienes Raices">
+                    <img src="/build/img/logo.svg" alt="Logo Bienes Raices">
                 </a>
                 <div class="mobile-menu">
-                    <img loading="lazy" src="build/img/barras.svg" alt="menu responsive">
+                    <img loading="lazy" src="/build/img/barras.svg" alt="menu responsive">
                 </div>
                 <div class="derecha">
                     <!-- dark node -->
-                     <img loading="lazy" src="build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
+                     <img loading="lazy" src="/build/img/dark-mode.svg" alt="dark mode" class="dark-mode-boton">
                     <!-- Menú de navegación principal -->
                     <nav class="navegacion">
                         <a href="nosotros.php">Nosotros</a>  <!-- Enlace a la sección/página Nosotros -->
