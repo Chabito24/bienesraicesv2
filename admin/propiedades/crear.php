@@ -6,7 +6,7 @@ require '../../includes/config/database.php';
 $db = conectarDB();
 
 $consulta = "SELECT * FROM vendedores";
-$resultado = mysqli_query($db, $consulta);
+$resultadoVendedores = mysqli_query($db, $consulta);
 
 // var_dump($db);
 
@@ -27,6 +27,9 @@ $errores = [];
     $wc = '';
     $estacionamiento = '';
     $vendedores_Id = '';
+
+$resultadoOperacion = $_GET['resultado'] ?? null;
+
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -77,19 +80,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(empty($errores)) {
 
 
-        $query = "INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, vendedorId) VALUES ( '$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento, '$vendedorId' )";
+        $query = "INSERT INTO propiedades
+        (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)
+        VALUES ('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', CURDATE(), '$vendedores_Id')";
+
 
     // echo $query;
 
-        $resultado = mysqli_query($db, $query);
+        $resultadoInsert = mysqli_query($db, $query);
 
-        if($resultado) {
-            echo 'insertado correctamente';
-        }  
+        if($resultadoInsert) {
+            header('Location: /admin');
+            exit;
+        }  else {
+            echo "Error SQL: " . mysqli_error($db);
+        }
     }  
 
-
-    
+    $resultadoVendedores = mysqli_query($db, $consulta);
 }
 
 
@@ -185,7 +193,7 @@ incluirTemplate('header');
                         **Seleccione**
                     </option>
 
-                    <?php while($vendedor = mysqli_fetch_assoc($resultado)): ?>
+                    <?php while($vendedor = mysqli_fetch_assoc($resultadoVendedores)): ?>
                         <option 
                         value="<?php echo $vendedor['id']; ?>"
                         <?php echo ((string)$vendedores_Id === (string)$vendedor['id']) ? 'selected' : ''; ?>
