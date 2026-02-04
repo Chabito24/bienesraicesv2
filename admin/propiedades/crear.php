@@ -33,8 +33,13 @@ $resultadoOperacion = $_GET['resultado'] ?? null;
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
+
     // echo '<pre>';
     // var_dump($_POST);
+    // echo '</pre>';
+
+    // echo '<pre>';
+    // var_dump($_FILES);
     // echo '</pre>';
 
     $titulo = mysqli_real_escape_string($db, $_POST['titulo'] ?? '');
@@ -44,34 +49,46 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $wc = mysqli_real_escape_string($db, $_POST['wc'] ?? '');
     $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento'] ?? '');
     $vendedores_Id = mysqli_real_escape_string($db, $_POST['vendedor'] ?? '');
+    $imagen = $_FILES['imagen'];
 
     if(!$titulo) {
         $errores[] = 'debes añadir un titulo';
     }
 
-      if(!$precio) {
+    if(!$precio) {
         $errores[] = 'debes añadir un precio';
     }
 
-      if(strlen( $descripcion ) < 50 ) {
+    if(strlen( $descripcion ) < 50 ) {
         $errores[] = 'debes añadir una descripcion mayor a 50 caracteres';
     }
 
-      if(!$habitaciones) {
-        $errores[] = 'debes añadir una habitaciones';
+    if(!$habitaciones) {
+        $errores[] = 'debes añadir una habitación';
     }
 
-      if(!$wc) {
+    if(!$wc) {
         $errores[] = 'debes añadir un wc';
     }
 
-      if(!$estacionamiento) {
+    if(!$estacionamiento) {
         $errores[] = 'debes añadir un estacionamiento';
     }
 
-      if(!$vendedores_Id) {
+    if(!$vendedores_Id) {
         $errores[] = 'debes añadir un Vendedor';
     }
+
+    if(!$imagen['name'] || $imagen['error']) {
+        $errores[] = 'imagen obligatoria';
+    }
+
+        $medida = 1000 * 1000;
+
+    if($imagen['size'] > $medida ) {
+        $errores[] = 'la imagen debe ser maximo de 1Mb';
+    }
+
 
     // echo '<pre>';
     // var_dump($errores);
@@ -79,7 +96,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if (empty($errores)) {
 
-    // Cast/validación básica (mejor que guardar todo como string)
+    //subir archivos
+    $carpetaImagenes = '../../imagenes/';
+    
+    if(!is_dir($carpetaImagenes)) {
+        mkdir($carpetaImagenes);
+    }
+
+    $nombreImagen = md5(uniqid( rand(), true )) .".jpg";
+
+    move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
+    
+
+    // Cast/validación básica
     $precio = filter_var($_POST['precio'] ?? null, FILTER_VALIDATE_INT);
     $habitaciones = filter_var($_POST['habitaciones'] ?? null, FILTER_VALIDATE_INT);
     $wc = filter_var($_POST['wc'] ?? null, FILTER_VALIDATE_INT);
@@ -95,8 +124,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (empty($errores)) {
         $stmt = $db->prepare("
             INSERT INTO propiedades
-            (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)
-            VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?)
+            (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?, CURDATE(), ?)
         ");
 
         if (!$stmt) {
@@ -107,7 +136,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $descripcion = trim($_POST['descripcion'] ?? '');
 
         // Tipos: s=string, i=int
-        $stmt->bind_param("sisiiii", $titulo, $precio, $descripcion, $habitaciones, $wc, $estacionamiento, $vendedores_Id);
+        $stmt->bind_param("sissiiii", $titulo, $precio, $nombreImagen, $descripcion, $habitaciones, $wc, $estacionamiento, $vendedores_Id);
 
         $ok = $stmt->execute();
 
@@ -147,7 +176,7 @@ incluirTemplate('header');
             </div>
         <?php endforeach; ?>
 
-        <form action="" class="formulario" method="POST" action="/admin/propiedades/crear.php">
+        <form class="formulario" method="POST" action="/admin/propiedades/crear.php" enctype="multipart/form-data">
             <fieldset>
                 <legend>Información general</legend>
 
@@ -171,14 +200,13 @@ incluirTemplate('header');
                 <input 
                     type="file" 
                     id="imagen" 
-                    accept="image/jpeg, image/png">
+                    accept="image/jpeg, image/png"
+                    name="imagen">
 
                 <label for="descripcion">Descripción:</label>
                 <textarea 
                     name="descripcion" 
-                    id="descripcion" 
-                    name="descripcion" 
-                    value=""><?php echo $descripcion; ?></textarea>
+                    id="descripcion"><?php echo $descripcion; ?></textarea>
             </fieldset>
 
             <fieldset>
