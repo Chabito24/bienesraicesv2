@@ -37,13 +37,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // var_dump($_POST);
     // echo '</pre>';
 
-    $titulo = $_POST['titulo'] ?? '';
-    $precio = $_POST['precio'] ?? '';
-    $descripcion = $_POST['descripcion'] ?? '';
-    $habitaciones = $_POST['habitaciones'] ?? '';
-    $wc = $_POST['wc'] ?? '';
-    $estacionamiento = $_POST['estacionamiento'] ?? '';
-    $vendedores_Id = $_POST['vendedor'] ?? '';
+    $titulo = mysqli_real_escape_string($db, $_POST['titulo'] ?? '');
+    $precio = mysqli_real_escape_string($db, $_POST['precio'] ?? '');
+    $descripcion = mysqli_real_escape_string($db, $_POST['descripcion'] ?? '');
+    $habitaciones = mysqli_real_escape_string($db, $_POST['habitaciones'] ?? '');
+    $wc = mysqli_real_escape_string($db, $_POST['wc'] ?? '');
+    $estacionamiento = mysqli_real_escape_string($db, $_POST['estacionamiento'] ?? '');
+    $vendedores_Id = mysqli_real_escape_string($db, $_POST['vendedor'] ?? '');
 
     if(!$titulo) {
         $errores[] = 'debes añadir un titulo';
@@ -77,27 +77,53 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // var_dump($errores);
     // echo '</pre>';
 
-    if(empty($errores)) {
+    if (empty($errores)) {
 
+    // Cast/validación básica (mejor que guardar todo como string)
+    $precio = filter_var($_POST['precio'] ?? null, FILTER_VALIDATE_INT);
+    $habitaciones = filter_var($_POST['habitaciones'] ?? null, FILTER_VALIDATE_INT);
+    $wc = filter_var($_POST['wc'] ?? null, FILTER_VALIDATE_INT);
+    $estacionamiento = filter_var($_POST['estacionamiento'] ?? null, FILTER_VALIDATE_INT);
+    $vendedores_Id = filter_var($_POST['vendedor'] ?? null, FILTER_VALIDATE_INT);
 
-        $query = "INSERT INTO propiedades
-        (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)
-        VALUES ('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', CURDATE(), '$vendedores_Id')";
+    if ($precio === false) $errores[] = 'precio inválido';
+    if ($habitaciones === false) $errores[] = 'habitaciones inválidas';
+    if ($wc === false) $errores[] = 'wc inválido';
+    if ($estacionamiento === false) $errores[] = 'estacionamiento inválido';
+    if ($vendedores_Id === false) $errores[] = 'vendedor inválido';
 
+    if (empty($errores)) {
+        $stmt = $db->prepare("
+            INSERT INTO propiedades
+            (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedores_id)
+            VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?)
+        ");
 
-    // echo $query;
-
-        $resultadoInsert = mysqli_query($db, $query);
-
-        if($resultadoInsert) {
-            header('Location: /admin');
-            exit;
-        }  else {
-            echo "Error SQL: " . mysqli_error($db);
+        if (!$stmt) {
+            die("Error prepare: " . $db->error);
         }
+
+        $titulo = trim($_POST['titulo'] ?? '');
+        $descripcion = trim($_POST['descripcion'] ?? '');
+
+        // Tipos: s=string, i=int
+        $stmt->bind_param("sisiiii", $titulo, $precio, $descripcion, $habitaciones, $wc, $estacionamiento, $vendedores_Id);
+
+        $ok = $stmt->execute();
+
+        if (!$ok) {
+            die("Error execute: " . $stmt->error);
+        } else {
+            header('Location: /admin?resultado=1');
+            exit;
+        }
+
+        $stmt->close();
+        }
+
+       
     }  
 
-    $resultadoVendedores = mysqli_query($db, $consulta);
 }
 
 
@@ -108,6 +134,8 @@ require '../../includes/funciones.php';
 incluirTemplate('header');
 //  include 'includes/templates/header.php';
  ?>
+
+ <!-- inicia HTML -->
     <main class="contenedor seccion">
         <h1>Crear</h1>
 
