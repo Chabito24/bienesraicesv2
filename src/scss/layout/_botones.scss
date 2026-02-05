@@ -18,3 +18,11 @@
 .boton-amarillo-inlineblock { // Variante amarilla con display inline-block (para no ocupar todo el ancho)
   @include boton($amarillo, inline-block); // Aplica mixin 'boton' con color amarillo y display: inline-block
 }
+
+.boton-rojo-block {
+  @include boton($rojo, block);
+}
+
+.boton-verde-block {
+  @include boton($verde, block);
+}
