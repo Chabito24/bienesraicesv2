@@ -1,50 +1,72 @@
 <?php
 
-$resultado = $_GET['resultado'] ?? null;
+    // Importar la conexión
 
-require '../includes/funciones.php';
+    require '../includes/config/database.php';
 
-incluirTemplate('header');
-//  include 'includes/templates/header.php';
- ?>
-    <main class="contenedor seccion">
-        <h1>Administrador de Bienes Raices</h1>
-        <?php 
-            if(intval($resultado)  === 1):
-        ?>
-        <p class="alerta exito">Creado correctamente</p>
+    $db = conectarDB();
 
-        <?php endif; ?>
 
-        <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva propiedad</a>
+    // Escribir el Query
+    $query = "SELECT * FROM propiedades";
 
-        <table class="propiedades">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Titulo</th>
-                    <th>Imagen</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
 
-            <tbody>
-                <tr>
-                    <th>1</th>
-                    <th>casa en la playa</th>
-                    <th><img src="/imagenes/8fe9b0324a38da8e4978c7e7dae5c313.jpg" class="imagen-tabla" alt=""></th>
-                    <th>$270.000.000</th>
-                    <th>
-                        <a href="#" class="boton-rojo-block">Eliminar</a>
-                        <a href="#" class="boton-verde-block">Actualizar</a>
-                    </th>
-                </tr>
-            </tbody>                
-        </table>
-    </main>
+    //Consultar la BD
+    $resultadoConsulta = mysqli_query($db, $query);
 
-<?php
+    //muestra mensaje condicional
+    $resultado = $_GET['resultado'] ?? null;
 
-    incluirTemplate('footer');
- ?>
+    require '../includes/funciones.php';
+
+    incluirTemplate('header');
+    //  include 'includes/templates/header.php';
+?>
+        <main class="contenedor seccion">
+            <h1>Administrador de Bienes Raices</h1>
+            <?php 
+                if(intval($resultado)  === 1):
+            ?>
+            <p class="alerta exito">Creado correctamente</p>
+
+            <?php endif; ?>
+
+            <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva propiedad</a>
+
+            <table class="propiedades">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titulo</th>
+                        <th>Imagen</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php while( $propiedad = mysqli_fetch_assoc($resultadoConsulta) ): ?>
+                    <tr>
+                        <td> <?php echo $propiedad['id']; ?> </td>
+                        <td> <?php echo $propiedad['titulo']; ?> </td>
+                        <td> 
+                            <img src="/imagenes/<?php echo $propiedad['imagen']; ?>" class="imagen-tabla" alt="">    
+                        </td>
+                        <td> $ <?php echo $propiedad['precio']; ?> </td>
+                        <td>
+                            <a href="#" class="boton-rojo-block">Eliminar</a>
+                            <a href="#" class="boton-verde-block">Actualizar</a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>                
+            </table>
+        </main>
+
+    <?php
+
+        // cerrar la conexión
+        mysqli_close($db);
+
+        incluirTemplate('footer');
+    ?>

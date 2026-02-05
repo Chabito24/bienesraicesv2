@@ -9,20 +9,25 @@
 
 .boton-amarillo { // Clase para botón con estilo amarillo
   @include boton($amarillo, block); // Aplica mixin 'boton' con color amarillo y display: block
+  border-radius: 0.5rem;
 }
 
 .boton-verde { // Clase para botón con estilo verde
   @include boton($verde, inline-block); // Aplica mixin 'boton' con color verde y display: inline-block
+  border-radius: 0.5rem;
 }
 
 .boton-amarillo-inlineblock { // Variante amarilla con display inline-block (para no ocupar todo el ancho)
   @include boton($amarillo, inline-block); // Aplica mixin 'boton' con color amarillo y display: inline-block
+  border-radius: 0.5rem;
 }
 
 .boton-rojo-block {
   @include boton($rojo, block);
+  border-radius: 0.5rem;
 }
 
 .boton-verde-block {
-  @include boton($verde, block);
+  @include boton($amarillo, block);
+  border-radius: 0.5rem;
 }

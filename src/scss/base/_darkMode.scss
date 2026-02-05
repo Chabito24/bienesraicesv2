@@ -6,7 +6,7 @@
 .dark-mode { // Estilos aplicados cuando el <body> (u otro contenedor) tiene la clase .dark-mode
     background-color: color.adjust($grisOscuro, $lightness: 5%); // Aclara ligeramente el gris oscuro para el fondo general
 
-    p { // Estilos para todos los párrafos dentro de .dark-mode
+    p, td { // Estilos para todos los párrafos dentro de .dark-mode
         color: $blanco; // Texto de párrafos en blanco para mejor contraste
     }
 
