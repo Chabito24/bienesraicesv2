@@ -25,6 +25,7 @@
 .boton-rojo-block {
   @include boton($rojo, block);
   border-radius: 0.5rem;
+  width: 100%;
 }
 
 .boton-verde-block {

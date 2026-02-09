@@ -31,3 +31,32 @@
         text-transform: uppercase; /*Transforma el texto del h3 en mayusculas*/
     }
 }
+
+.acciones-admin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; 
+}
+
+.btn-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 4.8rem;                /* ancho del botón ícono */
+    height: auto;                 /* se estira por align-items: stretch */
+    align-self: stretch;          /* fuerza a estirarse */
+    border-radius: .5rem;
+    text-decoration: none;
+    padding: 0;
+}
+
+/* el IMG/SVG se adapta a la altura del "botón" */
+.icono-eliminar{
+    width: 5rem;   /* ajusta aquí */
+    height: 5rem;  /* ajusta aquí */
+    padding-bottom: .5rem;      /* quita padding si está inflando el tamaño */
+    max-height: none;
+}
