@@ -2,7 +2,7 @@
 // IMPORTACIONES Y CONFIGURACIÓN BASE
 // ================================
 
-console.log("✅ Gulpfile correcto cargado");
+console.log("✅ Gulpfile cargado");
 const { src, dest, watch, series, parallel } = require("gulp");
 
 // SCSS (Dart Sass - API moderna)

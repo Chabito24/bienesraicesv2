@@ -100,7 +100,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $carpetaImagenes = '../../imagenes/';
     
     if(!is_dir($carpetaImagenes)) {
-        mkdir($carpetaImagenes);
+        mkdir($carpetaImagenes, 0755, true);
     }
 
     $nombreImagen = md5(uniqid( rand(), true )) .".jpg";

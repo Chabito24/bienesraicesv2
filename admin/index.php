@@ -27,7 +27,12 @@
             <?php 
                 if(intval($resultado)  === 1):
             ?>
-            <p class="alerta exito">Creado correctamente</p>
+                <p class="alerta exito">Creado correctamente</p>
+
+            <?php 
+                elseif (intval($resultado) === 2):      
+            ?>
+                <p class="alerta exito">Actualizado correctamente</p>
 
             <?php endif; ?>
 
