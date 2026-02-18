@@ -33,6 +33,10 @@
                 </div>
                 
             </div>
-
+            <?php 
+                if($inicio){
+                    echo"<h1>Venta de Propiedades de Lujo</h1>";
+                }
+            ?>
         </div>
     </header>

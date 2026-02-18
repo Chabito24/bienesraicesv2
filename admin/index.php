@@ -88,7 +88,7 @@
             <table class="propiedades">
                 <thead>
                     <tr>
-                        <th><input type="checkbox" id="select" name="select" value="1"> Seleccionar</th>
+                        <th><input type="checkbox" id="select" name="select" value="1"> </th>
                         <th>ID</th>
                         <th>Titulo</th>
                         <th>Imagen</th>
@@ -106,7 +106,7 @@
                         <td> 
                             <img src="/imagenes/<?php echo $propiedad['imagen']; ?>" class="imagen-tabla" alt="">    
                         </td>
-                        <td> $ <?php echo $propiedad['precio']; ?> </td>
+                        <td>$ <?php echo number_format((float)$propiedad['precio'], 0, ',', '.'); ?> </td>
                         <td>
                             <form action="" method="POST" class="w-100">
                                 <input 
