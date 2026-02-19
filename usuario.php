@@ -11,7 +11,7 @@
 
 
     //Query oara crear el usuario
-    $query =" INSERT INTO usuarios (email, password) VALUES ('{$email}', '{$password}');";
+    $query = " INSERT INTO usuarios (email, password) VALUES ('{$email}', '{$password}');";
 
     echo $query;
 
